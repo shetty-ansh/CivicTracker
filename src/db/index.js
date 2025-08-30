@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 import express from "express";
 import dotenv from "dotenv";
-// import { dbName } from "../constants.js";
 import { dbName } from "../constants.js";
 
 
