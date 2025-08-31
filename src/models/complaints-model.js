@@ -13,15 +13,26 @@ const ComplaintSchema = new mongoose.Schema({
     images: [String],
     location: {
         type: { type: String, enum: ['Point'], default: 'Point' },
-        coordinates: { type: [Number], index: '2dsphere' }
+        coordinates: { type: [Number], index: '2dsphere' },
+        address: String
     },
     status: { type: String, enum: ['Pending', 'In Progress', 'Resolved', 'Rejected'], default: 'Pending' },
     author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     anonymous: { type: Boolean, default: false },
     upvotes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+    downvotes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     bookmarks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
-    assignedTo: String
+    assignedTo: String,
+    department: String,
+    priority: { type: String, enum: ['low', 'medium', 'high'], default: 'low' },
+    resolvedAt: Date,
+    statusHistory: [{
+        status: String,
+        changedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+        changedAt: { type: Date, default: Date.now },
+        notes: String
+    }]
 }, { timestamps: true })
 
 export const Complaints = mongoose.model('Complaint', ComplaintSchema)

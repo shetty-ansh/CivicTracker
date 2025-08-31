@@ -16,7 +16,7 @@ const storage = new CloudinaryStorage({
 
 const upload = multer({ storage })
 
-router.post('/', upload.single('image'), controller.createComplaint)
+router.post('/', protect, upload.single('image'), controller.createComplaint)
 router.get('/', controller.getComplaints)
 router.get('/:id', controller.getComplaint)
 router.post('/:id/comment', protect, controller.comment)
