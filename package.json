@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/index.js"
+    "dev": "npx nodemon src/index.js"
   },
   "repository": {
     "type": "git",
@@ -31,7 +31,7 @@
     "mongoose": "^8.17.0",
     "mongoose-aggregate-paginate-v2": "^1.1.4",
     "multer": "^2.0.2",
-    "multer-storage-cloudinary": "^4.0.0"
+    "multer-storage-cloudinary": "4.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
